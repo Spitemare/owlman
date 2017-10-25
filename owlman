@@ -6,9 +6,7 @@ if [ "$(id -u)" -eq 0 ] ; then
 fi
 
 OWLMAN_AUR_HOME=${OWLMAN_AUR_HOME:-/tmp/owlman-aur}
-OWLMAN_ABS_HOME=${OWLMAN_ABS_HOME:-/tmp/owlman-abs}
 OWLMAN_CHANGELOG_DB=${OWLMAN_CHANGELOG_DB:-"$XDG_DATA_HOME/changelog_db"}
-OWLMAN_ABS_ROOT=${OWLMAN_ABS_ROOT:-/var/abs}
 OWLMAN_PACMAN_CACHE=${OWLMAN_PACMAN_CACHE:-/var/cache/pacman/pkg}
 OWLMAN_PACMAN_LOG=${OWLMAN_PACMAN_LOG:-/var/log/pacman.log}
 OWLMAN_BROWSER=${OWLMAN_BROWSER:-${BROWSER:-curl}}
@@ -381,13 +379,6 @@ case $action in
 		opts='-df'
 		[ $fetch_deps -eq 1 ] && opts="$opts -d"
 		cower $opts -t "$OWLMAN_AUR_HOME" "$@"
-		;;
-	abs)
-		while [ $# -gt 0 ] ; do
-			repo=$(pacman -Si "$1" | grep -i "^repository" | sed 's/[^:]\+: \(.*\)/\1/')
-			[ -n "$repo" ] && sudo abs "$repo/$1" && cp -rv "$OWLMAN_ABS_ROOT/$repo/$1" "$OWLMAN_ABS_HOME"
-			shift
-		done
 		;;
 	edit)
 		while [ $# -gt 0 ] ; do

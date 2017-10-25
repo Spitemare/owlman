@@ -50,9 +50,6 @@ Actions and Arguments
 *download* 'PKG' ...::
 	Download the given packages source from the 'AUR'.
 
-*abs* 'PKG' ...::
-	Download the given sync packages source via *abs*.
-
 *edit* 'PKG' ...::
 	Edit the install scripts of the given AUR packages.
 
@@ -194,14 +191,8 @@ The following environment variables are handled:
 'OWLMAN_AUR_HOME'::
 	Where should the downloaded AUR packages be stored?
 
-'OWLMAN_ABS_HOME'::
-	Where should the downloaded sync packages be stored?
-
 'OWLMAN_CHANGELOG_DB'::
 	Path to the database of changelog URLs.
-
-'OWLMAN_ABS_ROOT'::
-	The value of the *ABSROOT* variable in '/etc/abs.conf'.
 
 'OWLMAN_PACMAN_CACHE'::
 	The value of the *CacheDir* variable in '/etc/pacman.conf'.

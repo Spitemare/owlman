@@ -49,7 +49,6 @@ _1st_arguments=(
 	'autoremove:Remove all unused dependencies (orphans)'
 	'autouninstall:Remove all unused dependencies (orphans)'
 	'download:Download the given packages from the AUR'
-	'abs:Download the given sync packages via abs'
 	'edit:Edit the PKGBUILD for the given AUR package'
 	'search:Search for packages matching STRING in all databases'
 	'query:Search locally for packages matching STRING'
@@ -153,7 +152,7 @@ case "$words[2]" in
 			'1: :->forms' && return 0
 		_wanted_aur
 		;;
-	repository|abs)
+	repository)
 		_wanted_sync
 		;;
 	install)
