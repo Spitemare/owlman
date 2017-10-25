@@ -523,7 +523,7 @@ case $action in
 		;;
 	last)
 		num=${@:-7}
-		sed -n 's/.*\[PACMAN\] \(installed\|upgraded\) \([^ ]\+\).*/\2/p' "$OWLMAN_PACMAN_LOG" | tail -n "$num"
+		sed -n 's/.*\[ALPM\] \(installed\|upgraded\) \([^ ]\+\).*/\2/p' "$OWLMAN_PACMAN_LOG" | tail -n "$num"
 		;;
 	deps)
 		putinfo depends "$@"
