@@ -158,7 +158,6 @@ tmp_out=/tmp/owlman.$$
 trap cleanup EXIT
 
 [ ! -d "$OWLMAN_AUR_HOME" ] && mkdir -p "$OWLMAN_AUR_HOME"
-[ ! -d "$OWLMAN_ABS_HOME" ] && mkdir -p "$OWLMAN_ABS_HOME"
 
 quiet_results=0
 extended_infos=0
@@ -392,11 +391,7 @@ case $action in
 			if [ -s "$tmp_out" ] ; then
 				info "Installing $1."
 				printf "\n"
-				if [ $local_only -eq 1 ] ; then
-					cd "$OWLMAN_ABS_HOME/$1" && makepkg "$pacman_args" -ifs
-				else
-					sudorun pacman "$pacman_args" -S "$1"
-				fi
+				sudorun pacman "$pacman_args" -S "$1"
 				[ $? -ne 0 ] && exit 1
 			else
 				cower -ddf -t "$OWLMAN_AUR_HOME" "$1" | tee "$tmp_out"
